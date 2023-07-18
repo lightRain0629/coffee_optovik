@@ -1,0 +1,4 @@
+Map user = {
+  'username': '',
+  'password': '',
+};
