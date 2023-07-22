@@ -28,25 +28,36 @@ class MainPage extends StatelessWidget {
         return Scaffold(
           drawer: DrawerOptovik(),
           body: pages[stateNav.count],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: stateNav.count,
-            onTap: (value){
-              context.read<NavigationBloc>().add(OnTapEvent(index: value));
-            },
-            items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Клиенты',
+          bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+              boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Theme.of(context).colorScheme.background,
+              blurRadius: 50,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.production_quantity_limits),
-              label: 'Продукция',
+          ],
+        
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Настройки',
-            )
-          ]),
+            child: BottomNavigationBar(
+              currentIndex: stateNav.count,
+              onTap: (value){
+                context.read<NavigationBloc>().add(OnTapEvent(index: value));
+              },
+              items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Клиенты',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.production_quantity_limits),
+                label: 'Продукция',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'Настройки',
+              )
+            ]),
+          ),
         );
       },
     );

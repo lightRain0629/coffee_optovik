@@ -6,11 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DrawerOptovik extends StatelessWidget {
+class DrawerOptovik extends StatefulWidget {
   const DrawerOptovik({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<DrawerOptovik> createState() => _DrawerOptovikState();
+}
+
+
+
+
+class _DrawerOptovikState extends State<DrawerOptovik> {
+  // @override
+  // void initState() async {
+  //   // TODO: implement initState
+  //   super.initState();
+  //         final preference = await SharedPreferences.getInstance();
+  //     final shortName =  preference.getString('shortName');
+  // }
+  @override
+  Widget build(BuildContext context)  {
     return Drawer(
       child: Column(children: [
         SizedBox(
@@ -21,7 +36,7 @@ class DrawerOptovik extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                shortName,
+               "shortName",
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),

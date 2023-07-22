@@ -6,16 +6,16 @@ import 'package:coffee_optovik/repositories/customersRepository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'logic/blocNav/navigation_bloc.dart';
-import 'presentation/UI/loginPage.dart';
 import 'appRoutes/appRoutes.dart';
 import 'presentation/colorSchemes/color_schemes.g.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final preference = await SharedPreferences.getInstance();
   final isLoggedIn = preference.getBool('isLoggedIn') ?? false;
+
   // final token = preference.getString('token') ?? '';
   runApp(MyApp(
     appRouter: AppRouter(loggedIn: isLoggedIn),

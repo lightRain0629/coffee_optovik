@@ -6,33 +6,41 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 
-// justSortPrice(double price) {
-//   List priceString = price.toString().split('');
-//   List priceStringReversed = priceString.reversed.toList();
-//   print(priceString);
-//   for (var i = 0; i < priceStringReversed.length; i++) {
-//     if (priceStringReversed[1] == '.') {
-//       priceStringReversed.insert(i, '0');
-//     } else {
-//       if (priceStringReversed[2] == '.') {
-//         if (i == 6) {
-//           priceStringReversed.insert(i, ' ');
-//         } else if (i == 10) {
-//           priceStringReversed.insert(i, ' ');
-//         } else if (i == 14) {
-//           priceStringReversed.insert(i, ' ');
-//         } else if (i == 19) {
-//           priceStringReversed.insert(i, ' ');
-//         }
-//         ;
-//       } else if (priceStringReversed[i] != '.') {
-//         priceStringReversed.removeAt(i);
-//         print(priceStringReversed[i]);
-//       }
-//     }
-//   }
-//   return (priceStringReversed.reversed.toList().join(''));
-// }
+
+formatedPrice(double price){
+  String res = NumberFormat('#.00').format(price);
+  
+  return res;
+}
+
+
+justSortPrice(double price) {
+  
+  List priceString = NumberFormat('#.00').format(price).split('');
+  List priceStringReversed = priceString.reversed.toList();
+  print(priceString);
+  for (var i = 0; i < priceStringReversed.length; i++) {
+    if (priceStringReversed[1] == '.') {
+      priceStringReversed.insert(i, '0');
+    } else {
+      if (priceStringReversed[2] == '.') {
+        if (i == 6) {
+          priceStringReversed.insert(i, ' ');
+        } else if (i == 10) {
+          priceStringReversed.insert(i, ' ');
+        } else if (i == 14) {
+          priceStringReversed.insert(i, ' ');
+        } else if (i == 19) {
+          priceStringReversed.insert(i, ' ');
+        }
+        ;
+      } else if (priceStringReversed[i] != '.') {
+        priceStringReversed.removeAt(i);
+      }
+    }
+  }
+  return (priceStringReversed.reversed.toList().join(''));
+}
 
 class ClientCard extends StatelessWidget {
   final int index;
@@ -99,6 +107,7 @@ class ClientCard extends StatelessWidget {
                     PageTransition(
                         isIos: true,
                         child: HistoryOfClientPage(
+                          currencyName: currencyName,
                           indexClient: index,
                           name: title,
                         ),
@@ -137,7 +146,7 @@ class ClientCard extends StatelessWidget {
                         children: [
                           Container(
                               child: Text(
-                              DateFormat('dd.MM.yy').format(DateTime.parse(historyCustomerDate)),
+                              DateFormat('dd.MM.yyyy').format(DateTime.parse(historyCustomerDate)),
                             )),
                         ],
                       )
@@ -191,7 +200,7 @@ class InRowCash extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.baseline,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text(cash.toDouble().toString(),
+        Text(cash == 0? '0.00' : justSortPrice(cash),
             style: TextStyle(
                 color: cash.isNegative
                     ? Colors.red

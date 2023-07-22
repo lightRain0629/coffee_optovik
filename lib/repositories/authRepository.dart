@@ -30,8 +30,8 @@ class AuthRepository {
         final preferences = await SharedPreferences.getInstance();
         preferences.setBool('isLoggedIn', rememberUser);
         preferences.setString('token', body['token']);
-        // token = body['token'];
-        // shortName = body['data'[0]];
+        dynamic shortName = body['data']['shortName'];
+        preferences.setString('shortName', shortName);
         // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MainPage()));
         Navigator.of(context).pushReplacementNamed('/mainPage');
         return body;

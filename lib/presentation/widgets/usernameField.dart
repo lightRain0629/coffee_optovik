@@ -26,7 +26,7 @@ class UsernameField extends StatelessWidget {
           scrollPadding:
               EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
           decoration: InputDecoration(
-            label: Text('Username'),
+            label: Text('Пользователь'),
           ),
         );
       },

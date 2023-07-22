@@ -1,4 +1,7 @@
 import 'package:coffee_optovik/dataBaseTest/testClientData.dart';
+import 'package:coffee_optovik/models/customersHistoryModel.dart';
+import 'package:coffee_optovik/presentation/UI/searchClientUI.dart';
+import 'package:coffee_optovik/presentation/UI/searchInClientsHistory.dart';
 import 'package:coffee_optovik/presentation/widgets/bottomNavBarWithAlign.dart';
 import 'package:coffee_optovik/presentation/widgets/clientCard.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +13,11 @@ import '../../repositories/customersHistoryRepositories.dart';
 import '../widgets/onLoadingContainer.dart';
 
 class HistoryOfClientPage extends StatelessWidget {
+  final String currencyName;
   final String name;
   final int indexClient;
   const HistoryOfClientPage(
-      {super.key, required this.name, required this.indexClient});
+      {super.key, required this.name, required this.indexClient, this.currencyName = 'TMT'});
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +74,7 @@ class HistoryOfClientPage extends StatelessWidget {
                                     SnackBar(
                                         duration: Duration(seconds: 1),
                                         content:
-                                            Text('Selected datetime: $value')));
+                                          Text('Выбранная дата: ${DateFormat('dd.MM.yyyy').format(value!)}')));
                                 context
                                     .read<HistoryOfCustomerFetchBloc>()
                                     .add(LoadCustomersHistoryEvent(
@@ -81,7 +85,16 @@ class HistoryOfClientPage extends StatelessWidget {
                               });
                             },
                             icon: Icon(Icons.date_range_rounded)),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+                        IconButton(
+                            onPressed: () => showSearch(
+                                context: context,
+                                delegate: SearchInClientsHistory(
+                                  currencyName: currencyName,
+                                    historyList: state
+                                            is CustomerHistoryFetchDataLoadedState
+                                        ? state.customersHistory
+                                        : [])),
+                            icon: Icon(Icons.search)),
                       ],
                       floating: true,
                       title: Text('История клиента'),
@@ -90,7 +103,7 @@ class HistoryOfClientPage extends StatelessWidget {
                       child: Flexible(
                         child: Container(
                           padding:
-                              EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                              EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                           child: Text(
                             'Движение по ' + name,
                             style: Theme.of(context).textTheme.titleLarge,
@@ -103,11 +116,12 @@ class HistoryOfClientPage extends StatelessWidget {
                             padding: EdgeInsets.only(
                                 left: 20, right: 20, bottom: 80),
                             sliver: SliverList.builder(
-                                itemCount: state.customersHistory.length,
+                                itemCount: state.customersHistory.length - 1,
                                 itemBuilder: (context, index) {
                                   final customer =
                                       state.customersHistory[index];
                                   return ClientCard(
+                                    currencyName: currencyName,
                                     cash: customer.paySum.toDouble(),
                                     historyCustomerDate: customer.payDate,
                                     index: index,
@@ -173,9 +187,10 @@ class HistoryOfClientPage extends StatelessWidget {
                   ],
                 ),
                 BottomContainerWithAlign(
+                  currencyName: currencyName,
                     totalCash: state is CustomerHistoryFetchDataLoadedState
-                        ? total()
-                        : 0.00)
+                        ? state.customersHistory.last.paySum.toDouble()
+                        : 0.00 )
               ],
             ),
             // bottomNavigationBar: Container(  CustomerHistoryFetchDataLoadedState

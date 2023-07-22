@@ -17,6 +17,6 @@ class CustomersModel {
   static CustomersModel fromJson(json) => CustomersModel(
       id: json['id'] ?? 0,
       name: json['name'] ?? 'name',
-      balance: json['balance'] ?? 0,
+      balance: json['balance'] ?? 0.00,
       currencyName: json['currencyName'] ?? 'currencyName');
 }

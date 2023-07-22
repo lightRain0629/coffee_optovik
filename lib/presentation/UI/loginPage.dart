@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Column(children: [
                 Text(
-                  'Login',
+                  'Войти',
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 UsernameField(username: username, ctx: context),
@@ -105,7 +105,7 @@ class LoginPage extends StatelessWidget {
                       context: context,
                       ));
                 },
-                child: Text('Login'));
+                child: Text('Войти'));
       },
     );
   }

@@ -5,6 +5,7 @@ import 'package:coffee_optovik/dataBaseTest/testClientData.dart';
 import 'package:coffee_optovik/presentation/widgets/onLoadingContainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../repositories/customersRepository.dart';
 import '../widgets/clientCard.dart';
@@ -24,6 +25,7 @@ class ClientPage extends StatelessWidget {
           return CustomScrollView(
             slivers: [
               SliverAppBar(
+
                 floating: true,
                 actions: [
                   IconButton(
@@ -70,46 +72,50 @@ class OnLoadingClientCard extends StatelessWidget {
         sliver: SliverList.builder(
             itemCount: 5,
             itemBuilder: ((context, index) {
-              return OnLoadingContainer(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.11,
-                color: Theme.of(context).splashColor,
-                child: ListTile(
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      OnLoadingContainer(
-                        width: double.infinity,
-                        height: 10,
-                        child: Container(),
-                        color: Colors.grey,
-                      ),
-                      OnLoadingContainer(
-                          width:
-                              MediaQuery.of(context).size.width *
-                                  0.5,
+              return Shimmer.fromColors(
+                baseColor: Theme.of(context).splashColor,
+                highlightColor: Colors.grey[100]!,
+                child: OnLoadingContainer(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.11,
+                  color: Theme.of(context).splashColor,
+                  child: ListTile(
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        OnLoadingContainer(
+                          width: double.infinity,
                           height: 10,
+                          child: Container(),
                           color: Colors.grey,
-                          child: Container()),
-                      Divider(
-                        color: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .color,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                         OnLoadingContainer(
-                          width:
-                              MediaQuery.of(context).size.width *
-                                  0.3,
-                          height: 10,
-                          color: Colors.grey,
-                          child: Container()),
-                        ],
-                      )
-                    ],
+                        ),
+                        OnLoadingContainer(
+                            width:
+                                MediaQuery.of(context).size.width *
+                                    0.5,
+                            height: 10,
+                            color: Colors.grey,
+                            child: Container()),
+                        Divider(
+                          color: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .color,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                           OnLoadingContainer(
+                            width:
+                                MediaQuery.of(context).size.width *
+                                    0.3,
+                            height: 10,
+                            color: Colors.grey,
+                            child: Container()),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );

@@ -40,7 +40,7 @@ class _PassFieldState extends State<PassField> {
           controller: widget.passwordController,
           obscureText: _obscureText,
           decoration: InputDecoration(
-              labelText: 'Password',
+              labelText: 'Пароль',
               suffix: IconButton(
                   onPressed: _toggle,
                   icon: _obscureText

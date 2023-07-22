@@ -17,5 +17,5 @@ class CustomersHistoryModel {
       payDate: json['payDate'] ?? 'patDate',
       bankName: json['bankName'] ?? 'bankName',
       remark: json['remark'] ?? 'remark',
-      paySum: json['paySum'] ?? 0.1);
+      paySum: json['paySum'] ?? 0.00);
 }
