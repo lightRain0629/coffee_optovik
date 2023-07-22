@@ -1,4 +1,4 @@
-import 'package:coffee_optovik/testModel/clientDealHistoryModel.dart';
+
 import 'package:flutter/material.dart';
 
 import 'clientCard.dart';
@@ -6,19 +6,19 @@ import 'clientCard.dart';
 class BottomContainerWithAlign extends StatelessWidget {
   // TEST
   final double totalCash;
-  final List<DealHistoryModel> dealHistory;
+
   // TEST
-  const BottomContainerWithAlign({super.key, required this.totalCash, required this.dealHistory});
+  const BottomContainerWithAlign({super.key, required this.totalCash,});
 
   // TEST
 
-  totalCashCalc(){
-    double res = 0.00;
-    for (var i = 0; i < dealHistory.length; i++) {
-      res += dealHistory[i].cash;
-    }
-    return res;
-  }
+  // totalCashCalc(){
+  //   double res = 0.00;
+  //   for (var i = 0; i < dealHistory.length; i++) {
+  //     res += dealHistory[i].cash;
+  //   }
+  //   return res;
+  // }
   // TEST
 
   @override
@@ -43,7 +43,7 @@ class BottomContainerWithAlign extends StatelessWidget {
             'Итого:',
             style: Theme.of(context).textTheme.bodyLarge,
           ),
-          InRowCash(cash: totalCashCalc())
+          InRowCash(cash: totalCash)
         ]),
       ),
     );

@@ -1,11 +1,11 @@
-import 'package:coffee_optovik/UI/clientPage.dart';
-import 'package:coffee_optovik/UI/drawerOptovik.dart';
-import 'package:coffee_optovik/UI/productionPage.dart';
-import 'package:coffee_optovik/UI/settingsPage.dart';
+import 'package:coffee_optovik/presentation/UI/clientPage.dart';
+import 'package:coffee_optovik/presentation/UI/drawerOptovik.dart';
+import 'package:coffee_optovik/presentation/UI/productionPage.dart';
+import 'package:coffee_optovik/presentation/UI/settingsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocNav/navigation_bloc.dart';
+import '../../logic/blocNav/navigation_bloc.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -18,7 +18,7 @@ class MainPage extends StatelessWidget {
 
 
     List pages = [
-      ClientPage(cash: cash),
+      ClientPage(),
       ProductionPage(),
       SettingsPage(),
     ];

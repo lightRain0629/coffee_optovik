@@ -1,7 +1,7 @@
-import 'package:coffee_optovik/widgets/clientCard.dart';
+import 'package:coffee_optovik/presentation/widgets/clientCard.dart';
 import 'package:flutter/material.dart';
 
-import '../dataBaseTest/testClientData.dart';
+import '../../dataBaseTest/testClientData.dart';
 
 class SearchClient extends SearchDelegate {
 
@@ -30,7 +30,7 @@ class SearchClient extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     if ( query != null) {
-      results = clientDataName.where((element) => element.toLowerCase().contains(query.toLowerCase())).toList();
+      results = ['name', 'second name'].where((element) => element.toLowerCase().contains(query.toLowerCase())).toList();
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: ListView.builder(
@@ -52,11 +52,11 @@ class SearchClient extends SearchDelegate {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView.builder(
-          itemCount: clientDataNameRecent.length,
+          itemCount: 2,
           itemBuilder: (context, index) => ClientCard(
             index: index,
                 cash: 4000.08,
-                title: clientDataNameRecent[index],
+                title: 'title',
               )),
     );
   }

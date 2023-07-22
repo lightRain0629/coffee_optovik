@@ -1,5 +1,5 @@
-import 'package:coffee_optovik/UI/drawerOptovik.dart';
-import 'package:coffee_optovik/widgets/productionCardWithDes.dart';
+import 'package:coffee_optovik/presentation/UI/drawerOptovik.dart';
+import 'package:coffee_optovik/presentation/widgets/productionCardWithDes.dart';
 import 'package:flutter/material.dart';
 
 class ProductionPage extends StatelessWidget {

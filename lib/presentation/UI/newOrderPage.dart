@@ -1,11 +1,11 @@
-import 'package:coffee_optovik/widgets/bottomNavBarWithAlign.dart';
-import 'package:coffee_optovik/widgets/bottomOrderButtonWithTotal.dart';
-import 'package:coffee_optovik/widgets/productionCardWithDes.dart';
+import 'package:coffee_optovik/presentation/widgets/bottomNavBarWithAlign.dart';
+import 'package:coffee_optovik/presentation/widgets/bottomOrderButtonWithTotal.dart';
+import 'package:coffee_optovik/presentation/widgets/productionCardWithDes.dart';
 import 'package:flutter/material.dart';
 
 class NewOrderPage extends StatelessWidget {
-  final String name;
-  const NewOrderPage({super.key, required this.name});
+  final int id;
+  const NewOrderPage({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class NewOrderPage extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                     child: Text(
-                      name,
+                      id.toString(),
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),

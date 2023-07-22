@@ -1,4 +1,4 @@
-import 'package:coffee_optovik/widgets/clientCard.dart';
+import 'package:coffee_optovik/presentation/widgets/clientCard.dart';
 import 'package:flutter/material.dart';
 
 import '../UI/productPage.dart';
@@ -23,7 +23,7 @@ class ProductionCardWithDes extends StatelessWidget {
     return Flexible(
       child: GestureDetector(
         onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductPage()));
+          Navigator.of(context).pushNamed('/productPage');
         },
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 8),

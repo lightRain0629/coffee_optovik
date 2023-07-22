@@ -1,5 +1,5 @@
-import 'package:coffee_optovik/UI/mainPage.dart';
-import 'package:coffee_optovik/widgets/clientCard.dart';
+import 'package:coffee_optovik/presentation/UI/mainPage.dart';
+import 'package:coffee_optovik/presentation/widgets/clientCard.dart';
 import 'package:flutter/material.dart';
 
 class PaymentsAndOrderPage extends StatelessWidget {
